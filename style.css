@@ -1,0 +1,173 @@
+/* ============================
+   Nova Van Utilitários — UI Kit
+   Modernização + Acessibilidade + Responsivo
+=============================== */
+
+/* ----- Design Tokens ----- */
+:root{
+  --primary: #0a7c2d;
+  --primary-600: #096b28;
+  --secondary: #f4b400;
+  --secondary-700: #d99a00;
+  --bg: #f7f7f8;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --muted: #6b7280;
+  --ring: rgba(10,124,45,.25);
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0,0,0,.06);
+  --brand-gradient: radial-gradient(1200px 400px at 10% -20%, rgba(244,180,0,.15), transparent 40%),
+                    radial-gradient(1200px 400px at 100% 0%, rgba(10,124,45,.12), transparent 40%);
+}
+
+/* ----- Reset / Base ----- */
+*{ box-sizing: border-box; margin:0; padding:0; }
+html,body{ height:100%; scroll-behavior:smooth; }
+body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img{ display:block; max-width:100%; height:auto; }
+a{ color: inherit; text-decoration: none; }
+ul{ list-style: none; padding-left: 0; }
+.container{ width:min(1120px, 92%); margin-inline:auto; }
+
+.skip-link{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+.skip-link:focus{
+  position:fixed; left:1rem; top:1rem; width:auto; height:auto;
+  background:#000; color:#fff; padding:.6rem .9rem; border-radius:8px; z-index:9999;
+}
+
+/* ----- Header & Nav ----- */
+.site-header{
+  background: var(--brand-gradient), hwb(50 5% 15%);
+  color:#000;
+  position: sticky; top:0; z-index:50;
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+}
+.header-inner{
+  display:flex; align-items:center; justify-content:space-between; padding:14px 0;
+}
+.logo{ display:flex; align-items:center; gap:.65rem; font-weight:700; }
+.logo .brand{ font-family:Poppins, Inter, sans-serif; letter-spacing:.4px; }
+.nav{ display:flex; align-items:center; gap:1rem; }
+.nav-link{
+  padding:.6rem .9rem; border-radius:10px; font-weight:600;
+}
+.nav-link:hover{ background: rgba(0,0,0,.06); }
+.nav-link.is-active{ outline:2px solid rgba(0,0,0,.2); }
+
+/* Hamburger */
+.hamburger{ display:none; width:44px; height:44px; border-radius:12px; border:0; background:#00000010; cursor:pointer; }
+.hamburger:focus{ outline: 3px solid var(--ring); }
+.hamburger span{ display:block; width:22px; height:2px; margin:5px auto; background:#111; transition:.2s; border-radius:2px; }
+
+/* ----- Hero ----- */
+.hero{ background: var(--brand-gradient); padding: 44px 0 28px; }
+.hero-inner{ display:grid; grid-template-columns: 1.1fr .9fr; gap:2rem; align-items:center; }
+.hero-copy h1{ font-family:Poppins, Inter, sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem); line-height:1.2; }
+.hero-copy p{ color: var(--muted); margin-top:.6rem; }
+.hero-cta{ margin-top:1.2rem; display:flex; gap:.8rem; flex-wrap:wrap; }
+.hero-media{ display:grid; grid-template-columns: 1fr .8fr; gap:1rem; }
+.hero-card{ position:relative; background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); overflow:hidden; }
+.hero-card.small{ transform: translateY(14px); }
+.hero-card img{ aspect-ratio: 16/10; object-fit: cover; }
+.hero-badge{ position:absolute; top:10px; left:10px; background:#fff; color:#111; padding:.35rem .6rem; border-radius:999px; font-weight:700; font-size:.8rem; box-shadow: 0 4px 10px rgba(0,0,0,.08); }
+
+/* ----- Cards / Grids ----- */
+.grid-cards{ display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin: 24px 0 36px; }
+.info-card{
+  background:var(--surface); border-radius: var(--radius); padding:20px; text-align:center;
+  box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s;
+}
+.info-card:hover{ transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.12); }
+.info-card i{ font-size:1.75rem; color: var(--secondary); margin-bottom: 8px; }
+.info-card h3{ font-family:Poppins, Inter, sans-serif; margin:6px 0 4px; }
+
+/* ----- Estoque ----- */
+.page-title{ font-family:Poppins, Inter, sans-serif; margin: 22px 0 10px; }
+.grid-estoque{ display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 18px 0 28px; }
+.card{ background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); overflow:hidden; display:flex; flex-direction:column; }
+.card .thumb{ position:relative; overflow:hidden; }
+.card .thumb img{ width:100%; aspect-ratio: 16/10; object-fit:cover; transition: transform .35s; }
+.card:hover .thumb img{ transform: scale(1.04); }
+.badge{ position:absolute; top:10px; left:10px; background:#fff; color:#111; padding:.3rem .55rem; border-radius:999px; font-weight:700; box-shadow: 0 4px 10px rgba(0,0,0,.08); }
+.card-content{ padding: 14px; }
+.card-content h3{ font-size:1.05rem; margin-bottom:8px; }
+.preco{ font-size:1.2rem; font-weight:800; color: var(--primary-600); margin: 6px 0 8px; }
+.detalhes{ display:grid; grid-template-columns:1fr 1fr; gap:6px 10px; color: var(--muted); font-size:.95rem; margin:8px 0 4px; }
+.detalhes i{ width:18px; text-align:center; }
+.descricao{ margin:10px 0; }
+.card-actions{ display:flex; gap:.6rem; flex-wrap:wrap; margin-top: 6px; }
+
+/* ----- Botões ----- */
+.btn{ display:inline-flex; align-items:center; gap:.5rem; padding:.7rem 1rem; border-radius:12px; border:2px solid transparent; font-weight:700; cursor:pointer; transition:.2s; }
+.btn i{ font-size:1rem; }
+.btn-primary{ background: var(--primary); color:#fff; }
+.btn-primary:hover{ background: var(--primary-600); }
+.btn-secondary{ background: var(--secondary); color:#111; }
+.btn-secondary:hover{ background: var(--secondary-700); }
+.btn-outline{ background: transparent; border-color: #111; }
+.btn-outline:hover{ background:#111; color:#fff; }
+
+/* ----- Footer ----- */
+.site-footer{ background: hwb(50 5% 15%); color:#000; margin-top: 30px; }
+.footer-grid{
+  display:grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 18px; padding: 22px 0;
+}
+.site-footer h4{ font-family:Poppins, Inter, sans-serif; margin-bottom:6px; }
+.list-unstyled li + li{ margin-top:6px; }
+.socials{ display:flex; gap:.7rem; font-size:1.25rem; }
+.copyright{ border-top: 1px solid rgba(0,0,0,.12); padding: 12px 0; text-align:center; }
+
+/* ----- Modal Galeria ----- */
+.modal{
+  display:none; position:fixed; inset:0; background: rgba(0,0,0,.8);
+  justify-content:center; align-items:center; z-index:1000; padding: 10px;
+}
+.modal.open{ display:flex; }
+.modal-content{ position:relative; max-width:min(1024px, 96vw); width:100%; }
+.modal-content img{ width:100%; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+.modal .close{ position:absolute; top:10px; right:10px; border:0; background:#ffffffc2; width:40px; height:40px; border-radius:50%; font-size:24px; cursor:pointer; }
+.modal .nav{ position:absolute; top:50%; transform:translateY(-50%); border:0; background:#ffffffb8; width:46px; height:46px; border-radius:50%; font-size:22px; cursor:pointer; }
+.modal .prev{ left:10px; }
+.modal .next{ right:10px; }
+.thumbs{ display:flex; gap:8px; margin-top:8px; overflow:auto; padding: 4px 2px; }
+.thumbs img{ width:76px; height:56px; object-fit:cover; border-radius:8px; opacity:.8; cursor:pointer; border:2px solid transparent; }
+.thumbs img.active{ opacity:1; border-color:#fff; }
+
+/* ----- Floating WhatsApp ----- */
+.fab-whatsapp{
+  position: fixed; right: 16px; bottom: 16px; width:52px; height:52px;
+  border-radius:50%; display:grid; place-items:center; background:#25d366; color:#fff; box-shadow: 0 10px 30px rgba(0,0,0,.2);
+  z-index: 60;
+}
+.fab-whatsapp:active{ transform: scale(.98); }
+
+/* ----- Utilities ----- */
+.back-home{ margin: 18px 0 28px; }
+.list-unstyled{ list-style:none; padding:0; margin:0; }
+
+/* ----- Responsivo ----- */
+@media (max-width: 980px){
+  .hero-inner{ grid-template-columns: 1fr; }
+  .hero-media{ order:-1; grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 860px){
+  .footer-grid{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px){
+  .nav{ position: fixed; inset: 64px 0 auto 0; background:hwb(50 5% 15%); padding:12px; display:none; flex-direction:column; gap:.4rem; box-shadow:0 12px 40px rgba(0,0,0,.18); }
+  .nav.open{ display:flex; }
+  .hamburger{ display:block; }
+}
+@media (max-width: 560px){
+  .grid-estoque{ grid-template-columns: 1fr; }
+  .footer-grid{ grid-template-columns: 1fr; }
+}
