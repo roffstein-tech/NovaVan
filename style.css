@@ -171,3 +171,9 @@ ul{ list-style: none; padding-left: 0; }
   .grid-estoque{ grid-template-columns: 1fr; }
   .footer-grid{ grid-template-columns: 1fr; }
 }
+
+/* Acessibilidade: foco visível em links */
+a:focus {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
